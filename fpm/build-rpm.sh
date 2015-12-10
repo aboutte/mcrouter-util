@@ -22,7 +22,7 @@ glibc-devel.i686 glibc-devel.x86_64 gcc gcc-c++ zlib-devel autoconf automake \
 double-conversion double-conversion-devel boost boost-devel glog glog-devel thrift thrift-devel
 
 # Folly
-cd $CURRENT_DIR/src/folly-0.47.0/folly
+cd $CURRENT_DIR/src/folly/folly
 autoreconf -ivf
 ./configure --prefix=$CURRENT_DIR/build/usr/local
 make clean && make && make install

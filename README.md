@@ -1,11 +1,23 @@
 # mcrouter-util
 
-Submodule commands
+To build rpm:
 
-Whening doing a fresh checkout run these two commands:
-
+launch centos 7 AMI
+yum update -y
+yum install -y git vim
+cd /root/
+git clone https://github.com/aboutte/mcrouter-util.git
+cd mcrouter-util
 git submodule init
 git submodule update
+
+
+
+
+
+
+
+
 
 To update the submodule reference:
 

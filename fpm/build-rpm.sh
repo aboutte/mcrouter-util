@@ -40,12 +40,12 @@ make clean && make && make install
 cd $CURRENT_DIR/src/mcrouter/mcrouter
 export LDFLAGS="-L$CURRENT_DIR/build/usr/local/lib -L/usr/local/lib -ldl"
 export CXXFLAGS="-fpermissive"
-export CPPFLAGS="-I/root/mcrouter-util/fpm/build/usr/local/include"
+export CPPFLAGS="-I$CURRENT_DIR/build/usr/local/include"
 autoreconf --install && ./configure --prefix=$CURRENT_DIR/build/usr/local
 make clean && make && make install
 
 # Run FPM to build RPM
-fpm  -s dir -t rpm -n mcrouter --iteration 0 -v 0.1.0 -C $CURRENT_DIR/build \
+fpm  -s dir -t rpm -n mcrouter --iteration 0 -v 0.14.0 -C $CURRENT_DIR/build \
 --description "Mcrouter is a memcached protocol router for scaling memcached deployments" \
 --depends bzip2-devel --depends libevent-devel --depends libcap-devel --depends scons --depends unzip \
 --depends libtool --depends gflags-devel --depends openssl-devel --depends bison --depends flex \

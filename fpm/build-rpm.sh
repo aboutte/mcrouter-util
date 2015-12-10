@@ -29,13 +29,18 @@ make clean && make && make install
 
 # Ragel
 cd $CURRENT_DIR/src/ragel-6.9
+autoreconf -ivf
 ./configure --prefix=$CURRENT_DIR/build
+make clean && make && make install
+# the ragel command is used during the mcrouter make so I am installing it to the system as well as the build dir
+./configure
 make clean && make && make install
 
 # Compile McRouter
 cd $CURRENT_DIR/src/mcrouter/mcrouter
 export LDFLAGS="-L$CURRENT_DIR/build/usr/local/lib -L/usr/local/lib -ldl"
 export CXXFLAGS="-fpermissive"
+export CPPFLAGS="-I/root/mcrouter-util/fpm/build/usr/local/include"
 autoreconf --install && ./configure --prefix=$CURRENT_DIR/build/usr/local
 make clean && make && make install
 

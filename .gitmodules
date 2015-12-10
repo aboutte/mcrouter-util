@@ -1,0 +1,6 @@
+[submodule "fpm/src/mcrouter"]
+	path = fpm/src/mcrouter
+	url = https://github.com/facebook/mcrouter.git
+[submodule "fpm/src/folly"]
+	path = fpm/src/folly
+	url = https://github.com/facebook/folly.git

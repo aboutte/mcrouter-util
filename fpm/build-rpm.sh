@@ -7,6 +7,8 @@
 
 set -e
 
+PATH=$PATH:/usr/local/bin/
+
 # Requirements for FPM
 yum install -y epel-release ruby-devel gcc rpm-build
 gem install fpm
@@ -33,6 +35,7 @@ autoreconf -ivf
 ./configure --prefix=$CURRENT_DIR/build
 make clean && make && make install
 # the ragel command is used during the mcrouter make so I am installing it to the system as well as the build dir
+# is this really needed?  can I just include addtion search paths when making mcrouter?
 ./configure
 make clean && make && make install
 
@@ -45,11 +48,11 @@ autoreconf --install && ./configure --prefix=$CURRENT_DIR/build/usr/local
 make clean && make && make install
 
 # Run FPM to build RPM
-fpm  -s dir -t rpm -n mcrouter --iteration 0 -v 0.14.0 -C $CURRENT_DIR/build \
+fpm  -s dir -t rpm -n mcrouter --iteration 0 -v 0.14.0 --package /root/ -C $CURRENT_DIR/build \
 --description "Mcrouter is a memcached protocol router for scaling memcached deployments" \
---depends bzip2-devel --depends libevent-devel --depends libcap-devel --depends scons --depends unzip \
+--depends bzip2-devel --depends epel-release --depends libevent-devel --depends libcap-devel --depends scons --depends unzip \
 --depends libtool --depends gflags-devel --depends openssl-devel --depends bison --depends flex \
 --depends snappy-devel --depends numactl-devel --depends cyrus-sasl-devel --depends cmake \
 --depends glibc-devel --depends gcc --depends gcc-c++ --depends zlib-devel \
 --depends autoconf --depends automake --depends double-conversion --depends double-conversion-devel \
---depends boost --depends boost-devel --depends glog --depends glog-devel --depends thrift --depends thrift-devel $CURRENT_DIR
+--depends boost --depends boost-devel --depends glog --depends glog-devel --depends thrift --depends thrift-devel

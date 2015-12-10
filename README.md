@@ -20,8 +20,10 @@ To build rpm:
 
 
 
+When folly or mcrouter src need to be updated
 
-To update the submodule reference:
-
-git pull
-git submodule foreach git pull origin master
+* git pull
+* git submodule foreach git pull origin master
+* go into build-rpm.sh
+** update version number of fpm
+**

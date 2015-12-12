@@ -19,7 +19,8 @@ yum install -y epel-release
 yum install -y mcrouter-0.14.0-0.x86_64.rpm
 echo "PATH=$PATH:/usr/local/bin/" >> /root/.bashrc
 source /root/.bashrc
-Add /usr/local/lib to /etc/ld.so.conf and refresh the cache with sudo ldconfig ((https://lonesysadmin.net/2013/02/22/error-while-loading-shared-libraries-cannot-open-shared-object-file/))
+echo "/usr/local/lib" >> /etc/ld.so.conf (https://lonesysadmin.net/2013/02/22/error-while-loading-shared-libraries-cannot-open-shared-object-file/)
+sudo ldconfig
 
 When folly or mcrouter src need to be updated
 

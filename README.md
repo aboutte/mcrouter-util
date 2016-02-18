@@ -6,16 +6,17 @@ To build rpm:
 * yum update -y
 * yum install -y git vim screen
 * cd /root/
-* git clone https://github.com/aboutte/mcrouter-util.git
+* git clone https://github.com/shopatron/mcrouter-util.git
 * cd mcrouter-util
 * git submodule init
 * git submodule update
 * cd fpm
 * ./build-rpm.sh
+* .rpm is created at /root/
 
 When folly or mcrouter src need to be updated
 
-* cd submodule_directory
+* cd fpm/src/submodule_directory
 * git checkout v1.0
 * cd ..
 * git add submodule_directory

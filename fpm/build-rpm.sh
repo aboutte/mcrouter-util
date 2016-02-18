@@ -2,7 +2,7 @@
 
 #
 # Prerequisite:
-# You must run this on CentOS 7 box. A CentOS 7 Vagrantfile is provided.
+# You must run this on CentOS 7 EC2.
 #
 
 set -e
@@ -48,7 +48,7 @@ autoreconf --install && ./configure --prefix=$CURRENT_DIR/build/usr/local
 make clean && make && make install
 
 # Run FPM to build RPM
-fpm  -s dir -t rpm -n mcrouter --iteration 0 -v 0.14.0 --package /root/ -C $CURRENT_DIR/build \
+fpm  -s dir -t rpm -n mcrouter --iteration 0 -v 0.18.0 --package /root/ -C $CURRENT_DIR/build \
 --description "Mcrouter is a memcached protocol router for scaling memcached deployments" \
 --depends bzip2-devel --depends libevent-devel --depends libcap-devel --depends scons --depends unzip \
 --depends libtool --depends gflags-devel --depends openssl-devel --depends bison --depends flex \
